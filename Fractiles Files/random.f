@@ -124,7 +124,7 @@ c ----------------------------------------------------------------------
       implicit none
 
       integer n, nMax
-      character*80 name
+      character*256 name
 
       if ( n .gt. nMax ) then
         write (*,'( 2x,''Array Dimension Too Small'')')
@@ -142,7 +142,7 @@ c --------------------------
 
       integer i, n
       real x(1), sum
-      character*80 name, fName
+      character*256 name, fName
 
       sum = 0.
       do i=1,n
@@ -151,8 +151,8 @@ c --------------------------
       if ( sum .ne. 1. ) then
         write (*,*) ' CheckWt Subroutine.'
         write (*,'( 2x,''Error -- Weights do not sum to unity'')')
-        write (*,'( 2x,a80)') name
-        write (*,'( 2x,a80)') fName
+        write (*,'( 2x,a256)') name
+        write (*,'( 2x,a256)') fName
         stop 99
       endif
       return

@@ -62,7 +62,7 @@ c ----------------------------------------------------------------------
      1     ftype(MAX_FLT,MAXPARAM), ftype_wt(MAX_FLT,MAX_FLT), hxStep, hyStep,
      2     probAct0, sampleStep, dip1, top, fLong, fLat, wt_ActRateBranch,
      3     wt_MoRateBranch, sigArea, sigWidth, sum, attensyn, hwsyn, ftypesyn
-      character*80 fName1, fName
+      character*256 fName1, fName
 
 C     Input Fault Parameters
       read (10,*) iCoor
@@ -74,7 +74,7 @@ C     Input Fault Parameters
 
 C.....Loop over each fault in the source file....
       DO iFlt0=1,NFLT0
-        read (10,'( a80)') fName1
+        read (10,'( a256)') fName1
         read (10,*) probAct0
 
 c       Read number of segmentation models for this fault system
@@ -110,10 +110,10 @@ C.......Loop over number of individual fault segments....
           call CheckDim ( iflt, MAX_FLT, 'MAX_FLT   ' )
 
 c         Read past name of this segment
-          read(10,'( a80)') fname
+          read(10,'( a256)') fname
           read (10,*) isourceType, attenType(iFlt), sampleStep, directflag, synflag
 
-          write (*,'( 2x,''iFlt'',i5, 2x,a80)') iFlt, fname
+          write (*,'( 2x,''iFlt'',i5, 2x,a256)') iFlt, fname
 
 c         Read past the synchronous Rupture parameters
           if (synflag .gt. 0) then
@@ -432,7 +432,7 @@ c ----------------------------------------------------------------------
      1     ftype(MAX_FLT,MAXPARAM), ftype_wt(MAX_FLT,MAX_FLT), hxStep, hyStep,
      2     probAct0, sampleStep, dip1, top, fLong, fLat, wt_ActRateBranch,
      3     wt_MoRateBranch, sigArea, sigWidth, sum, attensyn, hwsyn, ftypesyn
-      character*80 fName1, fName
+      character*256 fName1, fName
 
 C     Input Fault Parameters
       read (10,*) iCoor
@@ -444,7 +444,7 @@ C     Input Fault Parameters
 
 C.....Loop over each fault in the source file....
       DO iFlt0=1,NFLT0
-        read (10,'( a80)') fName1
+        read (10,'( a256)') fName1
         read (10,*) probAct0
 
 c       Read number of segmentation models for this fault system
@@ -480,10 +480,10 @@ C.......Loop over number of individual fault segments....
           call CheckDim ( iflt, MAX_FLT, 'MAX_FLT   ' )
 
 c         Read past name of this segment
-          read(10,'( a80)') fname
+          read(10,'( a256)') fname
           read (10,*) isourceType, attenType(iFlt), sampleStep, directflag, synflag
 
-          write (*,'( 2x,''iFlt'',i5, 2x,a80)') iFlt, fname
+          write (*,'( 2x,''iFlt'',i5, 2x,a256)') iFlt, fname
 
 c         Read past the synchronous Rupture parameters
           if (synflag .gt. 0) then

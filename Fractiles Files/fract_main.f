@@ -29,7 +29,7 @@ c     compatible with Haz45.3
      2     specT1(MAX_PROB), hazLevel(10), testHaz, version, xi, hermite(10),
      3     gasdev
       real*8 sum
-      character*80 filein, file1
+      character*256 filein, file1
 
 
 *** need to fix: treating all ftype as epistemic
@@ -42,15 +42,15 @@ c     compatible with Haz45.3
 
 c     Open and read the run file
       write (*,*) 'Enter the input filename.'
-      read (*,'(a80)') filein
+      read (*,'(a256)') filein
       open (31,file=filein,status='old')
       read (31,*) iseed
       read (31,*) nSample
       read (31,*) nPer
       read (31,*) nHazLevel, (HazLevel(k),k=1,nHazLevel)
 
-      read (31,'( a80)') file1
-      write (*,'( a80)') file1
+      read (31,'( a256)') file1
+      write (*,'( a256)') file1
       open (30,file=file1,status='new')
 
       call CheckDim ( nSample, MAX_SAMPLE, 'MAX_SAMPLE ' )
@@ -293,13 +293,13 @@ c -------------------------------------------------------------------
       integer attenType(MAX_FLT), PCflag(MAX_PROB)
       real haz(7,MAX_ATTEN,MAX_FLT,MAX_WIDTH,MAXPARAM,MAX_FTYPE),
      1     temp(MAX_INTEN), version
-      character*80 file1, dummy
+      character*256 file1, dummy
 
       nwr = 12
 
 c     Open output file
       if (jInten .eq. 1 ) then
-        read (31,'( a80)') file1
+        read (31,'( a256)') file1
         write (*,*) 'Opening out1 file from the hazard runs.'
         write (*,*) file1
         open (nwr,file=file1,status='old')
@@ -375,13 +375,13 @@ c                only keep if it is the desired spectral period
       return
  200  write (*,'( 2x,''Error reading iflt line in out1'',3i5)') iflt, iWidth, iProb
       backspace (nwr)
-      read (nwr,'( a80)') dummy
-      write (*,'( a80)') dummy
+      read (nwr,'( a256)') dummy
+      write (*,'( a256)') dummy
       stop 99
  201  write (*,'( 2x,''Error reading haz line in out1'',5i5 )') iflt, iWidth, iProb, iAtten, iFtype, i
       backspace (nwr)
-      read (nwr,'( a80)') dummy
-      write (*,'( a80)') dummy
+      read (nwr,'( a256)') dummy
+      write (*,'( a256)') dummy
       stop 99
       end
 

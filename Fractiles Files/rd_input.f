@@ -12,7 +12,7 @@ c -------------------------------------------------------------------------
       real testInten(MAX_INTEN), dummy, specT, dirflag,
      2     checkwt, c1, c2, wtgm(4,MAX_ATTEN), sigtrunc, Varadd,
      4     cumWt_GM(MAX_ATTEN,MAX_ATTEN), SpecT1, version
-      character*80 filein, title
+      character*256 filein, title
 
 c     Set Data file units
       nwr = 11
@@ -23,12 +23,12 @@ c     Program no longer allowed to read from multiple files.
       nFiles = 1
 
 c     Open PSHA Run Input File
-      read (31,'( a80)') filein
-      write (*,'( a80)') filein
+      read (31,'( a256)') filein
+      write (*,'( a256)') filein
       open (20,file=filein,status='old')
 
 c     Open Input PSHA Source/Fault file
-      read (20,'( a80)') filein
+      read (20,'( a256)') filein
       open (10,file=filein,status='old')
 
 C     Check for version compatibility with hazard code
@@ -43,7 +43,7 @@ c     Read in parameters for background grid.
       read (20,*) dummy
 
 c     Input Title (not used)
-      read(20,'( a80)') title
+      read(20,'( a256)') title
 
 c     Number of Spectral Periods and Number of attenuation relations types
       read(20,*) nProb, nattentype
